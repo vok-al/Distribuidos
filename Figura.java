@@ -1,28 +1,41 @@
-public abstract class Figura implements Desplazable {
-    
-    protected Coordenada centro; 
-    protected Coordenada[] vertices;
+public class Rectangulo extends Figura {
 
-    public abstract double area();
+    private double base;
+    private double altura;
 
-    public Figura(Coordenada centro, Coordenada[] vertices) {
-        this.centro = centro;
-        this.vertices = vertices;
+    public Rectangulo(Coordenada centro, double base, double altura) {
+
+        super(centro, new Coordenada[4]);
+
+        this.base = base;
+        this.altura = altura;
+
+        double mitadBase = base / 2;
+        double mitadAltura = altura / 2;
+
+        vertices[0] = new Coordenada(
+                centro.abcisa() - mitadBase,
+                centro.ordenada() + mitadAltura
+        );
+
+        vertices[1] = new Coordenada(
+                centro.abcisa() + mitadBase,
+                centro.ordenada() + mitadAltura
+        );
+
+        vertices[2] = new Coordenada(
+                centro.abcisa() + mitadBase,
+                centro.ordenada() - mitadAltura
+        );
+
+        vertices[3] = new Coordenada(
+                centro.abcisa() - mitadBase,
+                centro.ordenada() - mitadAltura
+        );
     }
 
     @Override
-    public void desplazar(double dx, double dy) {
-        
-        centro = new Coordenada(
-                centro.abcisa() + dx,
-                centro.ordenada() + dy
-        );
-
-        
-        for (int i = 0; i < vertices.length; i++) {
-            vertices[i] = new Coordenada(vertices[i].abcisa() + dx, vertices[i].ordenada() + dy);
-        }
-        
+    public double area() {
+        return base * altura;
     }
-    
 }
