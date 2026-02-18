@@ -12,6 +12,6 @@ public class Coordenada {
     //Sobreescritura del metodo de la superclase objeto para imprimir con System.out.println()
     @Override
     public String toString() {
-        return "(" + x + ", " + y + ")";
+        return String.format("(%.2f, %.2f)", x, y);
     }
 }

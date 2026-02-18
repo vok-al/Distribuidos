@@ -1,16 +1,35 @@
-public class PruebaPolig {
-    public static void main (String[] args) {
-        Coordenada centro = new Coordenada(1,1);
-        Rectangulo rect1 = new Rectangulo(7, 4);
+public class PruebaFigura {
+    public static void main(String[] args) {
 
-        System.out.println(rect1.area());
-        System.out.println()
+        Coordenada centro1 = new Coordenada(0, 0);
+        Coordenada centro2 = new Coordenada(5, 5);
 
-        PoligonoIrreg polig = new PoligonoIrreg(7);
-        System.out.println(polig);
+        TrianguloEq t = new TrianguloEq(centro1, 4);
+        Rectangulo r = new Rectangulo(centro2, 6, 3);
 
-        Coordenada coord = new Coordenada(5,1);
-        polig.modificarVertice(2, coord);
-        System.out.println(polig);
+        System.out.println("Triángulo equilátero:");
+        System.out.println(t);
+        System.out.println("Área: " + t.area());
+
+        System.out.println("\nRectángulo:");
+        System.out.println(r);
+        System.out.println("Área: " + r.area());
+
+        System.out.println("\nDesplazando figuras...\n");
+
+        t.desplazar(2, 2);
+        r.desplazar(-3, 1);
+
+        System.out.println("Triángulo después de desplazar:");
+        System.out.println(t);
+        System.out.println("Área: " + t.area());
+
+        System.out.println("\nRectángulo después de desplazar:");
+        System.out.println(r);
+        System.out.println("Área: " + r.area());
     }
 }
+
+
+
+

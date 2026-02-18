@@ -1,41 +1,31 @@
-public class Rectangulo extends Figura {
+public abstract class Figura implements Desplazable {
 
-    private double base;
-    private double altura;
+    protected Coordenada centro;
+    protected Coordenada[] vertices;
 
-    public Rectangulo(Coordenada centro, double base, double altura) {
+    public Figura(Coordenada centro, Coordenada[] vertices) {
+        this.centro = centro;
+        this.vertices = vertices;
+    }
 
-        super(centro, new Coordenada[4]);
+    public abstract double area();
 
-        this.base = base;
-        this.altura = altura;
+    @Override
+    public void desplazar(double dx, double dy) {
 
-        double mitadBase = base / 2;
-        double mitadAltura = altura / 2;
+        centro = new Coordenada(centro.abcisa() + dx,centro.ordenada() + dy);
 
-        vertices[0] = new Coordenada(
-                centro.abcisa() - mitadBase,
-                centro.ordenada() + mitadAltura
-        );
-
-        vertices[1] = new Coordenada(
-                centro.abcisa() + mitadBase,
-                centro.ordenada() + mitadAltura
-        );
-
-        vertices[2] = new Coordenada(
-                centro.abcisa() + mitadBase,
-                centro.ordenada() - mitadAltura
-        );
-
-        vertices[3] = new Coordenada(
-                centro.abcisa() - mitadBase,
-                centro.ordenada() - mitadAltura
-        );
+        for (int i = 0; i < vertices.length; i++) {
+            vertices[i] = new Coordenada(vertices[i].abcisa() + dx,vertices[i].ordenada() + dy );
+        }
     }
 
     @Override
-    public double area() {
-        return base * altura;
+    public String toString() {
+        String resultado = "Centro: " + centro + "\n";
+        for (int i = 0; i < vertices.length; i++) {
+            resultado += "Vértice " + i + ": " + vertices[i] + "\n";
+        }
+        return resultado;
     }
 }
