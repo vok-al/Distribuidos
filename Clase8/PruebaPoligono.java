@@ -6,27 +6,19 @@ public class PruebaPoligono {
 
         System.out.println("Contenido del poligono recien creado: Vertices totales: "+ poligono.getNumeroVertices());
         // Añadir un nuevo vertice
-        // Generar primer vértice
-        double x1 = Math.round(((Math.random() * 200) - 100) * 1000.0) / 1000.0;
-        double y1 = Math.round(((Math.random() * 200) - 100) * 1000.0) / 1000.0;
-        Coordenada n1 = new Coordenada(x1, y1);
 
-        // Generar segundo vértice
-        double x2 = Math.round(((Math.random() * 200) - 100) * 1000.0) / 1000.0;
-        double y2 = Math.round(((Math.random() * 200) - 100) * 1000.0) / 1000.0;
-        Coordenada n2 = new Coordenada(x2, y2);
+        for(int n=0; n<3; n++){
+            //double random = Math.random() * 1000.0; // Genera un número aleatorio entre 0 y 1000
+            //System.out.println("Valor aleatorio generado: " + random);
+            //double h= Math.round(Math.random() * 1000.0) / 1000.0;
+            //System.out.println("Valor aleatorio generado con 3 decimales: " + h);
+            double x = Math.random() * 200 - 100; // Genera un número aleatorio entre  -100 y 100 con 3 decimales
+            double y = Math.random() * 200 - 100;
+            Coordenada nuevaCoordenada = new Coordenada(x, y);
+            poligono.anadeVertice(nuevaCoordenada);
+            System.out.println("\nSe agrego el vertice: " + nuevaCoordenada);
 
-        // Generar tercer vértice
-        double x3 = Math.round(((Math.random() * 200) - 100) * 1000.0) / 1000.0;
-        double y3 = Math.round(((Math.random() * 200) - 100) * 1000.0) / 1000.0;
-        Coordenada n3 = new Coordenada(x3, y3);
-        
-        poligono.anadeVertice(n1);
-        System.out.println("\nSe agrego el vertice: " + n1);
-        poligono.anadeVertice(n2);
-        System.out.println("Se agrego el vertice: " + n2);
-        poligono.anadeVertice(n3);  
-        System.out.println("Se agrego el vertice: " + n3);
+        }
         
         System.out.println("\nVertices totales: "+poligono.getNumeroVertices());
 
